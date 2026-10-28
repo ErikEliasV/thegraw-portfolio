@@ -14,7 +14,6 @@ const PLACEHOLDER = {
   category: "brand identy",
   year: "2022",
   services: ALL_SERVICES,
-  thumbnail: asset("/images/home/project-thumb-lorena.webp"),
 } as const;
 
 /** Cases collage main image, the cover of cases without one in the Figma. */
@@ -73,23 +72,10 @@ export function findProject(slug: string) {
   return PROJECTS.find((project) => project.slug === slug);
 }
 
-/** Project page carousel and studio card: the original placeholder project. */
+/** Studio "Projects Lead" card: the original placeholder project. */
 export const FEATURED_PROJECT: Project = {
   ...PLACEHOLDER,
   slug: "allce",
   name: "Allce",
   cover: asset("/images/home/featured-project.webp"),
 };
-
-/** "Frame 96" carousel cards. */
-export const CAROUSEL_CARD = {
-  label: "brand",
-  year: "2026",
-  cta: "view project",
-} as const;
-
-export const CAROUSEL_PROJECTS: readonly Project[] = [
-  FEATURED_PROJECT,
-  FEATURED_PROJECT,
-  FEATURED_PROJECT,
-];

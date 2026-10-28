@@ -12,5 +12,4 @@ export type Project = {
   year: string;
   services: readonly ServiceId[];
   cover: string;
-  thumbnail: string;
 };

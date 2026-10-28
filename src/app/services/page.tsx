@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
-import { ServicesAccordionSection } from "@/components/sections/services-accordion-section";
+import { ServicesSections } from "@/components/sections/services-sections";
+import { SERVICES_PAGE } from "@/constants/services";
 
 export const metadata: Metadata = {
-  title: "Services",
+  title: SERVICES_PAGE.title,
 };
 
 export default function ServicesPage() {
   return (
     <main id="conteudo">
-      <ServicesAccordionSection />
+      <ServicesSections />
     </main>
   );
 }

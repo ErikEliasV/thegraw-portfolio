@@ -323,7 +323,7 @@ export function CasesShowcase() {
               type="button"
               aria-pressed={pressed}
               className={cn(
-                "lg:px-11.429 flex h-36 items-center px-10 text-tab whitespace-nowrap transition-colors duration-300 ease-power3 lg:h-40",
+                "flex h-36 items-center px-10 text-tab whitespace-nowrap transition-colors duration-300 ease-power3 lg:h-40 lg:px-11.5",
                 pressed
                   ? "bg-red-graw text-white"
                   : "bg-chip text-chip-text hover:text-white",
@@ -351,7 +351,7 @@ export function CasesShowcase() {
 
       <div
         data-cases-chrome
-        className="gap-7.333 absolute right-16 bottom-80 flex w-44 flex-col items-center text-center text-counter lg:top-1/2 lg:right-47 lg:bottom-auto lg:-translate-y-1/2"
+        className="absolute right-16 bottom-80 flex w-44 flex-col items-center gap-7.25 text-center text-counter lg:top-1/2 lg:right-47 lg:bottom-auto lg:-translate-y-1/2"
       >
         <SwapText direction={direction} className="text-white">
           {pad(active + 1)}

@@ -43,6 +43,7 @@
 
   /* Figma translucent fills */
   --color-shade: rgb(0 0 0 / 0.52);
+  --color-dusk: rgb(0 0 0 / 0.49);
   --color-fade-light: rgb(228 228 228 / 0.19);
   --color-fade-dark: rgb(15 15 15 / 0.19);
   --color-tint: rgb(1 60 196 / 0.01);
@@ -51,6 +52,7 @@
   --blur-fade: 13.05px;
   --blur-veil: 20.8px;
   --blur-menu: 64px;
+  --blur-hero: 41.6px;
 
   /* GSAP easings as CSS curves for transitions */
   --ease-power3: cubic-bezier(0.215, 0.61, 0.355, 1);
@@ -101,6 +103,9 @@
   --text-lg--letter-spacing: -0.07em;
   --text-button: max(1.5rem, calc(var(--fluid) * 40));
   --text-button--line-height: 1.2;
+  --text-back: max(1.5rem, calc(var(--fluid) * 38.419));
+  --text-back--line-height: 1.2;
+  --text-back--letter-spacing: -0.07em;
   --text-credit: max(1.5rem, calc(var(--fluid) * 38));
   --text-credit--line-height: 1;
   --text-nav: max(1.5rem, calc(var(--fluid) * 37.552));
@@ -121,6 +126,12 @@
   --text-cta: max(1rem, calc(var(--fluid) * 23.281));
   --text-cta--line-height: 1.2;
   --text-cta--letter-spacing: -0.07em;
+  --text-section: max(1rem, calc(var(--fluid) * 25));
+  --text-section--line-height: 1.2;
+  --text-section--letter-spacing: -0.07em;
+  --text-lead: max(1rem, calc(var(--fluid) * 24.42));
+  --text-lead--line-height: 0.93;
+  --text-lead--letter-spacing: -0.04em;
   --text-tab: max(1rem, calc(var(--fluid) * 22.812));
   --text-tab--line-height: 1.2;
   --text-tab--letter-spacing: -0.07em;
@@ -143,6 +154,9 @@
   --text-caption: max(0.75rem, calc(var(--fluid) * 14.959));
   --text-caption--line-height: 0.93;
   --text-caption--letter-spacing: -0.04em;
+  --text-fine: max(0.625rem, calc(var(--fluid) * 11.6));
+  --text-fine--line-height: 0.93;
+  --text-fine--letter-spacing: -0.04em;
   --text-micro: max(0.4375rem, calc(var(--fluid) * 9.33));
   --text-micro--letter-spacing: -0.13em;
 

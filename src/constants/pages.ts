@@ -1,9 +1,6 @@
 import { asset } from "@/utils/asset";
 
 /** Figma placeholder copy, kept as written in the design. */
-export const LOREM_SHORT =
-  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride Printing Library in London, took a 1914 Cicero";
-
 export const LOREM_LONG =
   "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride Printing Library in London, took a 1914 Cicero translation and scrambled it to make dummy text for Letraset's Body Type sheets. It has survived not only many decades, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised thanks to these sheets and more recently with desktop publishing software like Aldus PageMaker and Microsoft Word including versions of Lorem Ipsum.";
 
@@ -40,22 +37,66 @@ export const PROJECT_PAGE = {
 const TEAM_BIO =
   "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1966, when";
 
-/** Figma shows one placeholder member; the arrows cycle through the team. */
+/**
+ * Figma team frames (André, Alan, Erick, Tatá): one portrait placeholder,
+ * each with its own headline, sized to fill the frame width and placed as a
+ * share of its 1080px height.
+ */
 export const TEAM_MEMBERS = [
-  { name: "Nome", role: "Função", bio: TEAM_BIO },
-  { name: "Nome", role: "Função", bio: TEAM_BIO },
-  { name: "Nome", role: "Função", bio: TEAM_BIO },
+  {
+    name: "André Gonçalves",
+    role: "CREATIVE DIRECTOR",
+    bio: TEAM_BIO,
+    roleClassName: "text-role-director lg:top-[72.34%] lg:left-51",
+  },
+  {
+    name: "Alan Erick",
+    role: "MOTION DESIGNER",
+    bio: TEAM_BIO,
+    roleClassName: "text-role-motion lg:top-[71.61%] lg:left-51",
+  },
+  {
+    name: "Eric Elias",
+    role: "DEVELOPER",
+    bio: TEAM_BIO,
+    roleClassName: "text-giant lg:top-[71.13%] lg:left-640",
+  },
+  {
+    name: "Tatá Gomes",
+    role: "PROJECT MANAGER",
+    bio: TEAM_BIO,
+    roleClassName: "text-role-manager lg:top-[72.39%] lg:left-51",
+  },
 ] as const;
 
 export const STUDIO_PAGE = {
   title: "Studio",
-  headline: "DIGITAL DESIGNER",
   projectsLead: "Projects Lead",
   portrait: asset("/images/studio/portrait.webp"),
+  projectsLeadImage: asset("/images/studio/projects-lead.webp"),
   sections: [
-    { heading: "Proposito", body: LOREM_SHORT },
-    { heading: "Pilares", body: LOREM_SHORT },
-    { heading: "Fundamentos", body: LOREM_SHORT },
+    {
+      heading: "Purpose",
+      body: [
+        "We move brands forward through clear thinking, distinctive design, and digital experiences built with purpose.",
+      ],
+    },
+    {
+      heading: "Pillars",
+      body: [
+        "Clarity — We turn complex ideas into clear, focused experiences.",
+        "Identity — We create distinctive visual languages that make each brand recognizable.",
+        "Craft — We bring strategy, design, and development together with care.",
+      ],
+    },
+    {
+      heading: "Foundations",
+      body: [
+        "Good work starts with listening. We ask the right questions, understand the challenge, and make deliberate decisions at every step — from the first idea to the final detail.",
+      ],
+    },
   ],
-  video: "video",
+  workspace: asset("/images/studio/workspace.webp"),
+  videoCover: asset("/images/studio/video-cover.webp"),
+  play: "play",
 } as const;

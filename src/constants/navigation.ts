@@ -2,7 +2,7 @@ import { asset } from "@/utils/asset";
 
 export const NAV_LINKS = [
   { label: "home", href: "/" },
-  { label: "work", href: "/work" },
+  { label: "cases", href: "/cases" },
   { label: "studio", href: "/studio" },
   { label: "services", href: "/services" },
 ] as const;
@@ -11,6 +11,6 @@ export const NAV_LINKS = [
 export const MENU_VISUAL = asset("/images/shared/menu-visual.webp");
 
 export const FOOTER_LINKS = [
-  { label: "Work", href: "/work" },
+  { label: "Work", href: "/cases" },
   { label: "Studio", href: "/studio" },
 ] as const;

@@ -24,28 +24,41 @@
   --color-ink: #111111;
   --color-paper: #e4e4e4;
   --color-placeholder: #d9d9d9;
-  --color-menu: #d6d6d6;
+  --color-menu: #eaeaea;
   --color-menu-link: #7f7f7f;
   --color-bar: #787878;
   --color-taupe: #9f9192;
   --color-olive: #84835e;
+  --color-wine: #3f0710;
   --color-yellow: #f8bf03;
   --color-orange: #ff4000;
   --color-coal: #191919;
+  --color-night: #0d0d0d;
+  --color-dim: #434343;
+  --color-chip-text: #8c8c8c;
+  --color-track: #888888;
 
   /* Figma shader gradient-map stops */
   --color-red-graw-deep: #7b000b;
   --color-silver: #cdcdcd;
+  --color-mist: #d1d1d1;
+  --color-fog: #dfdfdf;
+  --color-snow: #fefefe;
 
   /* Figma translucent fills */
   --color-shade: rgb(0 0 0 / 0.52);
+  --color-dusk: rgb(0 0 0 / 0.49);
   --color-fade-light: rgb(228 228 228 / 0.19);
   --color-fade-dark: rgb(15 15 15 / 0.19);
   --color-tint: rgb(1 60 196 / 0.01);
+  --color-glass: rgb(211 211 211 / 0.59);
+  --color-chip: rgb(101 101 101 / 0.18);
 
   --blur-fade: 13.05px;
   --blur-veil: 20.8px;
   --blur-menu: 64px;
+  --blur-hero: 41.6px;
+  --blur-band: 78.65px;
 
   /* GSAP easings as CSS curves for transitions */
   --ease-power3: cubic-bezier(0.215, 0.61, 0.355, 1);
@@ -70,18 +83,33 @@
   --text-end: calc(var(--fluid) * 338.106);
   --text-end--line-height: 1.2;
   --text-end--letter-spacing: -0.07em;
+  --text-role-motion: calc(var(--fluid) * 239.569);
+  --text-role-motion--line-height: 1.2;
+  --text-role-motion--letter-spacing: -0.07em;
+  --text-role-director: calc(var(--fluid) * 226.467);
+  --text-role-director--line-height: 1.2;
+  --text-role-director--letter-spacing: -0.07em;
+  --text-role-manager: calc(var(--fluid) * 225.561);
+  --text-role-manager--line-height: 1.2;
+  --text-role-manager--letter-spacing: -0.07em;
   --text-giant: calc(var(--fluid) * 248.266);
   --text-giant--line-height: 1.2;
   --text-giant--letter-spacing: -0.07em;
   --text-display: max(3rem, calc(var(--fluid) * 156));
   --text-display--line-height: 0.93;
   --text-display--letter-spacing: -0.04em;
+  --text-cases: max(3rem, calc(var(--fluid) * 124.543));
+  --text-cases--line-height: 0.74;
+  --text-cases--letter-spacing: -0.04em;
   --text-title: max(2.75rem, calc(var(--fluid) * 136.397));
   --text-title--line-height: 1.2;
   --text-title--letter-spacing: -0.07em;
   --text-card: max(2.5rem, calc(var(--fluid) * 113.602));
   --text-card--line-height: 1.2;
   --text-card--letter-spacing: -0.07em;
+  --text-chapter: max(2.25rem, calc(var(--fluid) * 86.15));
+  --text-chapter--line-height: 1.2;
+  --text-chapter--letter-spacing: -0.07em;
   --text-heading: max(2.25rem, calc(var(--fluid) * 77.552));
   --text-heading--line-height: 1.2;
   --text-heading--letter-spacing: -0.04em;
@@ -96,6 +124,9 @@
   --text-lg--letter-spacing: -0.07em;
   --text-button: max(1.5rem, calc(var(--fluid) * 40));
   --text-button--line-height: 1.2;
+  --text-back: max(1.5rem, calc(var(--fluid) * 38.419));
+  --text-back--line-height: 1.2;
+  --text-back--letter-spacing: -0.07em;
   --text-credit: max(1.5rem, calc(var(--fluid) * 38));
   --text-credit--line-height: 1;
   --text-nav: max(1.5rem, calc(var(--fluid) * 37.552));
@@ -103,6 +134,11 @@
   --text-number: max(1.25rem, calc(var(--fluid) * 30));
   --text-number--line-height: 0.93;
   --text-number--letter-spacing: -0.04em;
+  --text-more: max(1.375rem, calc(var(--fluid) * 34.286));
+  --text-more--line-height: 1.2;
+  --text-counter: max(1.125rem, calc(var(--fluid) * 26.836));
+  --text-counter--line-height: 1.2;
+  --text-counter--letter-spacing: -0.07em;
   --text-label: max(1.125rem, calc(var(--fluid) * 26));
   --text-label--line-height: 1.2;
   --text-md: max(1rem, calc(var(--fluid) * 24.577));
@@ -111,6 +147,19 @@
   --text-cta: max(1rem, calc(var(--fluid) * 23.281));
   --text-cta--line-height: 1.2;
   --text-cta--letter-spacing: -0.07em;
+  --text-section: max(1rem, calc(var(--fluid) * 25));
+  --text-section--line-height: 1.2;
+  --text-section--letter-spacing: -0.07em;
+  --text-lead: max(1rem, calc(var(--fluid) * 24.42));
+  --text-lead--line-height: 0.93;
+  --text-lead--letter-spacing: -0.04em;
+  --text-intro: max(1rem, calc(var(--fluid) * 24.804));
+  --text-intro--line-height: 0.89;
+  --text-copy: max(1rem, calc(var(--fluid) * 26.661));
+  --text-copy--line-height: 1;
+  --text-tab: max(1rem, calc(var(--fluid) * 22.812));
+  --text-tab--line-height: 1.2;
+  --text-tab--letter-spacing: -0.07em;
   --text-body: max(1rem, calc(var(--fluid) * 24));
   --text-body--line-height: 1;
   --text-meta: max(0.875rem, calc(var(--fluid) * 21.864));
@@ -121,12 +170,18 @@
   --text-tag: max(0.75rem, calc(var(--fluid) * 17.193));
   --text-tag--line-height: 1.2;
   --text-tag--letter-spacing: -0.07em;
+  --text-index: max(0.75rem, calc(var(--fluid) * 16));
+  --text-index--line-height: 1.2;
+  --text-index--letter-spacing: 0.57em;
   --text-desc: max(0.8125rem, calc(var(--fluid) * 16));
   --text-desc--line-height: 0.93;
   --text-desc--letter-spacing: -0.04em;
   --text-caption: max(0.75rem, calc(var(--fluid) * 14.959));
   --text-caption--line-height: 0.93;
   --text-caption--letter-spacing: -0.04em;
+  --text-fine: max(0.625rem, calc(var(--fluid) * 11.6));
+  --text-fine--line-height: 0.93;
+  --text-fine--letter-spacing: -0.04em;
   --text-micro: max(0.4375rem, calc(var(--fluid) * 9.33));
   --text-micro--letter-spacing: -0.13em;
 

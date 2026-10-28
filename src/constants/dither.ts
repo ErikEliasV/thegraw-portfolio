@@ -55,6 +55,41 @@ export const FOOTER_DITHER: DitherPreset = {
   mobileFrame: COVER_FRAME,
 };
 
+/**
+ * Figma "all projects" footer: the same figure at 6% over BLACK GRAW, mapped
+ * white → #d1d1d1 → black, offset −15%, scatter 50%, then Pixelate.
+ */
+export const FOOTER_DARK_DITHER: DitherPreset = {
+  ...FOOTER_DITHER,
+  palette: [
+    { token: "white", position: 0 },
+    { token: "mist", position: 0.5 },
+    { token: "black", position: 1 },
+  ],
+  opacity: 0.06,
+  // Image rectangle 1920×3227 at (0, -297) in the 1920×608 frame.
+  frame: { x: 0, y: -0.48849, width: 1, height: 5.30757 },
+};
+
+/**
+ * Figma home "case studies" (1920×617): image mapped white → #dfdfdf →
+ * #fefefe, offset −15%, scatter 50%, a light grain behind the title.
+ */
+export const CASE_STUDIES_DITHER: DitherPreset = {
+  src: asset("/images/home/case-studies-texture.webp"),
+  palette: [
+    { token: "white", position: 0 },
+    { token: "fog", position: 0.5 },
+    { token: "snow", position: 1 },
+  ],
+  pixelSize: 1,
+  offset: -0.15,
+  scatter: 0.5,
+  quantize: "none",
+  frame: { x: -0.1262, y: -1.6694, width: 1.2523, height: 5.2269 },
+  mobileFrame: COVER_FRAME,
+};
+
 /** Figma "Studio" hero: image at 14% over BLACK GRAW, offset −15%, scatter 50%. */
 export const STUDIO_DITHER: DitherPreset = {
   src: asset("/images/studio/hero-texture.webp"),
@@ -70,4 +105,22 @@ export const STUDIO_DITHER: DitherPreset = {
   quantize: "none",
   frame: { x: -0.0576, y: -0.4935, width: 1.1152, height: 2.9861 },
   mobileFrame: COVER_FRAME,
+};
+
+/**
+ * Figma "Cases - all view" panel: the same texture at 14% over paper, masked
+ * to the 1920×620 panel at the bottom of the 1080 frame.
+ */
+export const CASES_DRAWER_DITHER: DitherPreset = {
+  ...STUDIO_DITHER,
+  frame: { x: -0.0576, y: -1.6016, width: 1.1152, height: 5.2016 },
+};
+
+/**
+ * Figma "Project Open" closing block (1920×1039.658): the studio texture at
+ * 14% over BLACK GRAW behind the credits and the cases track.
+ */
+export const PROJECT_END_DITHER: DitherPreset = {
+  ...STUDIO_DITHER,
+  frame: { x: -0.2221, y: -0.9883, width: 1.4441, height: 4.0169 },
 };

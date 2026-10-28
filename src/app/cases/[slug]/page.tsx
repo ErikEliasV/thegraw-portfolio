@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ProjectDetailSection } from "@/components/sections/project-detail-section";
-import { ProjectsCarouselSection } from "@/components/sections/projects-carousel-section";
-import { PROJECTS } from "@/constants/projects";
+import { ProjectMoreSection } from "@/components/sections/project-more-section";
+import { findProject, PROJECTS } from "@/constants/projects";
 
 export const dynamicParams = false;
 
@@ -12,27 +12,23 @@ export function generateStaticParams() {
 
 export async function generateMetadata({
   params,
-}: PageProps<"/work/[slug]">): Promise<Metadata> {
+}: PageProps<"/cases/[slug]">): Promise<Metadata> {
   const { slug } = await params;
-  const project = PROJECTS.find((item) => item.slug === slug);
+  const project = findProject(slug);
   return { title: project?.name };
 }
 
 export default async function ProjectPage({
   params,
-}: PageProps<"/work/[slug]">) {
+}: PageProps<"/cases/[slug]">) {
   const { slug } = await params;
-  const project = PROJECTS.find((item) => item.slug === slug);
+  const project = findProject(slug);
   if (!project) notFound();
 
   return (
-    // The Figma "Project Open" frame is 1440 wide: scale this page from it.
-    <main
-      id="conteudo"
-      className="bg-paper [--fluid:calc(100vw/1440)] lg:[--spacing:calc(100vw/1440)]"
-    >
+    <main id="conteudo" className="bg-black-graw">
       <ProjectDetailSection project={project} />
-      <ProjectsCarouselSection className="mt-31 bg-paper" />
+      <ProjectMoreSection />
     </main>
   );
 }

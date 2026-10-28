@@ -7,14 +7,14 @@ import { LETS_WORK, PROPOSAL_CTA, PROPOSAL_HREF } from "@/constants/services";
 
 const BAR_COUNT = 5;
 
-/** Figma "Frame 81" (799px): placeholder bars, headline and proposal CTA. */
+/** Figma "Frame 81" (942px): placeholder bars, headline and proposal CTA. */
 export function LetsWorkSection() {
   return (
     <section
       data-header-theme="dark"
-      className="relative flex flex-col gap-48 overflow-hidden bg-white-graw pb-96 text-black-graw lg:block lg:h-799 lg:p-0"
+      className="relative flex flex-col gap-48 overflow-hidden bg-white-graw pb-96 text-black-graw lg:block lg:h-942 lg:p-0"
     >
-      <div className="relative h-120 pt-24 lg:absolute lg:inset-x-0 lg:top-205 lg:h-195 lg:pt-36">
+      <div className="relative h-120 pt-24 lg:absolute lg:inset-x-0 lg:top-121 lg:h-195 lg:pt-36">
         <Marquee speed={50} itemsClassName="gap-40 pr-40 lg:gap-80 lg:pr-80">
           {Array.from({ length: BAR_COUNT }, (_, index) => (
             <div

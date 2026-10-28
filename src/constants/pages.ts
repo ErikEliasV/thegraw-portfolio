@@ -16,6 +16,9 @@ export const HOME_PAGE = {
 } as const;
 
 export const PROJECT_PAGE = {
+  /** The Figma project pages use this photo for every image. */
+  image: asset("/images/home/featured-project.webp"),
+  viewAll: "view all",
   solution: "Solution",
   process: "process",
   results: "results",

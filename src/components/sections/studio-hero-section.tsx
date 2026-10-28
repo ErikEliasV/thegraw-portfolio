@@ -10,6 +10,7 @@ import { STUDIO_PAGE, TEAM_MEMBERS } from "@/constants/pages";
 import { FEATURED_PROJECT, getProjectHref } from "@/constants/projects";
 import { DitherImage } from "@/features/dither-image";
 import { asset } from "@/utils/asset";
+import { cn } from "@/utils/cn";
 
 const MEMBER_COUNT = TEAM_MEMBERS.length;
 
@@ -36,6 +37,8 @@ export function StudioHeroSection() {
           imageClassName="object-[50%_30%]"
         />
       </div>
+
+      <h1 className="sr-only">{STUDIO_PAGE.title}</h1>
 
       <div
         aria-roledescription="carrossel"
@@ -73,19 +76,14 @@ export function StudioHeroSection() {
           </button>
         </div>
         <div key={index} className="flex flex-col gap-15">
-          <div className="flex items-center gap-18 whitespace-nowrap">
-            <SplitReveal
-              as="h2"
-              split="chars"
-              trigger="load"
-              className="text-subheading leading-[1.2] tracking-tight"
-            >
-              {member.name}
-            </SplitReveal>
-            <p className="text-body leading-[1.03] text-red-graw">
-              {member.role}
-            </p>
-          </div>
+          <SplitReveal
+            as="h2"
+            split="chars"
+            trigger="load"
+            className="text-subheading leading-[1.2] tracking-tight whitespace-nowrap"
+          >
+            {member.name}
+          </SplitReveal>
           <SplitReveal
             split="lines"
             trigger="load"
@@ -105,14 +103,14 @@ export function StudioHeroSection() {
         >
           <span className="relative block h-90 w-160 overflow-hidden lg:h-150 lg:w-267">
             <Image
-              src={FEATURED_PROJECT.thumbnail}
+              src={STUDIO_PAGE.projectsLeadImage}
               alt={FEATURED_PROJECT.name}
-              width={1200}
-              height={601}
-              className="absolute top-[-4.59%] left-[-29.12%] h-[131.29%] w-[147.1%] max-w-none transition-transform duration-500 ease-power3 group-hover:scale-105"
+              fill
+              sizes="(min-width: 1024px) 14vw, 160px"
+              className="object-cover transition-transform duration-500 ease-power3 group-hover:scale-105"
             />
           </span>
-          <span className="flex h-90 w-56 items-center justify-center bg-olive lg:h-150 lg:w-93">
+          <span className="flex h-90 w-56 items-center justify-center bg-wine lg:h-150 lg:w-93">
             <Image
               src={asset("/icons/chevron-right-light.svg")}
               alt=""
@@ -127,13 +125,17 @@ export function StudioHeroSection() {
       {/* Scaled with the section (not the viewport) and its Figma side margin,
           so the line fits the width that is really there. */}
       <SplitReveal
-        as="h1"
+        key={index}
+        as="p"
         split="chars"
         trigger="load"
         delay={0.2}
-        className="relative mt-auto px-[calc(var(--fluid)*50)] pt-48 pb-16 text-giant whitespace-nowrap [--fluid:calc(100cqw/1920)] lg:absolute lg:top-[71.13%] lg:left-50 lg:mt-0 lg:p-0"
+        className={cn(
+          "relative mt-auto px-[calc(var(--fluid)*50)] pt-48 pb-16 whitespace-nowrap [--fluid:calc(100cqw/1920)] lg:absolute lg:mt-0 lg:p-0",
+          member.roleClassName,
+        )}
       >
-        {STUDIO_PAGE.headline}
+        {member.role}
       </SplitReveal>
     </section>
   );

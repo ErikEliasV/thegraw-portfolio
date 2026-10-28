@@ -1,5 +1,5 @@
 import { STUDIO_INFO } from "@/constants/studio";
-import type { Service } from "@/types/project";
+import type { Service, ServiceId } from "@/types/project";
 import { asset } from "@/utils/asset";
 
 const DESCRIPTION =
@@ -43,21 +43,35 @@ export const LETS_WORK = {
   ],
 } as const;
 
-/** Figma "Services" accordion: three blank panels (red, taupe, gray). */
-export const SERVICE_PANELS = [
-  { title: "Branding", className: "bg-red-graw", href: "/services/branding" },
-  { title: "Products", className: "bg-taupe", href: null },
-  { title: "Motion e 3D", className: "bg-gray-graw", href: null },
-] as const;
+/** Figma "Services": the three services, top to bottom as in the hero. */
+export const SERVICE_OFFER: readonly { id: ServiceId; title: string }[] = [
+  { id: "packpaging", title: "Packpaging" },
+  { id: "web-design", title: "Web design" },
+  { id: "branding", title: "Branding" },
+];
 
-export const SERVICE_DETAILS = [
-  {
-    slug: "branding",
-    title: "Branding",
-    category: "brand identy",
-    image: asset("/images/services/branding.webp"),
-    hire: "contrate",
-    projectsLabel: "projects <branding>",
-    back: "back",
-  },
-] as const;
+/** A Figma "Projeto view Services" slide (all nine variants are this placeholder). */
+export const SERVICE_SLIDE = {
+  slug: "grupo-penguin",
+  client: "grupo penguin",
+  year: "2026",
+  logo: asset("/images/logos/grupo-penguin.svg"),
+  description: "A calm, editorial, website for a wellness brand",
+  disciplines: ["branding", "web design", "development"],
+  image: asset("/images/services/project-slide.webp"),
+} as const;
+
+export const SERVICES_PAGE = {
+  title: "Services",
+  heroImage: asset("/images/services/branding.webp"),
+  defaultService: "branding",
+  /** Three slides per service in the Figma. */
+  slidesPerService: 3,
+  clientLabel: "Client",
+  yearLabel: "year",
+  back: "back",
+} as const;
+
+export function projectsLabel(title: string) {
+  return `projects <${title.toLowerCase()}>`;
+}

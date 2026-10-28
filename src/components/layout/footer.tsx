@@ -2,28 +2,40 @@ import Image from "next/image";
 import Link from "next/link";
 import { RollText } from "@/components/ui/roll-text";
 import { UnderReveal } from "@/components/ui/under-reveal";
-import { FOOTER_DITHER } from "@/constants/dither";
+import { FOOTER_DARK_DITHER, FOOTER_DITHER } from "@/constants/dither";
 import { FOOTER_LINKS } from "@/constants/navigation";
 import { STUDIO_INFO } from "@/constants/studio";
 import { DitherImage } from "@/features/dither-image";
 import { asset } from "@/utils/asset";
+import { cn } from "@/utils/cn";
 
 const LINK_POSITION = ["lg:left-886", "lg:left-1522"] as const;
+
+type FooterProps = {
+  /** `dark`: the shorter black footer of the Figma "all projects" page. */
+  tone?: "red" | "dark";
+};
 
 /**
  * Figma "Footer" (937px): dithered figure behind the studio details. It slides
  * out from under the section above, like the project under the hero.
  */
-export function Footer() {
+export function Footer({ tone = "red" }: FooterProps) {
   const [emailUser, emailDomain] = STUDIO_INFO.email.split("@");
 
   return (
     <footer
       data-header-theme="light"
-      className="relative overflow-hidden bg-red-graw text-white-graw lg:h-937"
+      className={cn(
+        "relative overflow-hidden text-white-graw",
+        tone === "red" ? "bg-red-graw lg:h-937" : "bg-black-graw lg:h-608",
+      )}
     >
       <UnderReveal className="lg:absolute lg:inset-0">
-        <DitherImage {...FOOTER_DITHER} animation="scroll" />
+        <DitherImage
+          {...(tone === "red" ? FOOTER_DITHER : FOOTER_DARK_DITHER)}
+          animation="scroll"
+        />
         <div className="relative flex flex-col gap-48 px-16 pt-96 pb-64 lg:static lg:block lg:p-0">
           <Image
             src={asset("/icons/logo-the-graw-wordmark.svg")}

@@ -4,7 +4,7 @@ export const STUDIO_INFO = {
     "São Paulo Design &",
     "Digital Product Studio founded by Visual Director André Gonçalves",
   ],
-  pitch: "a design for bussines companys",
+  pitch: "a design for bussinnes company",
   code: "281118",
   since: "©2020",
   instagram: "@thegrawdesign",

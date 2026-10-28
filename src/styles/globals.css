@@ -29,6 +29,7 @@
   --color-bar: #787878;
   --color-taupe: #9f9192;
   --color-olive: #84835e;
+  --color-wine: #3f0710;
   --color-yellow: #f8bf03;
   --color-orange: #ff4000;
   --color-coal: #191919;
@@ -50,6 +51,7 @@
   --color-fade-light: rgb(228 228 228 / 0.19);
   --color-fade-dark: rgb(15 15 15 / 0.19);
   --color-tint: rgb(1 60 196 / 0.01);
+  --color-glass: rgb(211 211 211 / 0.59);
   --color-chip: rgb(101 101 101 / 0.18);
 
   --blur-fade: 13.05px;
@@ -81,6 +83,15 @@
   --text-end: calc(var(--fluid) * 338.106);
   --text-end--line-height: 1.2;
   --text-end--letter-spacing: -0.07em;
+  --text-role-motion: calc(var(--fluid) * 239.569);
+  --text-role-motion--line-height: 1.2;
+  --text-role-motion--letter-spacing: -0.07em;
+  --text-role-director: calc(var(--fluid) * 226.467);
+  --text-role-director--line-height: 1.2;
+  --text-role-director--letter-spacing: -0.07em;
+  --text-role-manager: calc(var(--fluid) * 225.561);
+  --text-role-manager--line-height: 1.2;
+  --text-role-manager--letter-spacing: -0.07em;
   --text-giant: calc(var(--fluid) * 248.266);
   --text-giant--line-height: 1.2;
   --text-giant--letter-spacing: -0.07em;

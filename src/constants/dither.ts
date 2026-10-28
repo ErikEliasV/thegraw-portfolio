@@ -71,6 +71,25 @@ export const FOOTER_DARK_DITHER: DitherPreset = {
   frame: { x: 0, y: -0.48849, width: 1, height: 5.30757 },
 };
 
+/**
+ * Figma home "case studies" (1920×617): image mapped white → #dfdfdf →
+ * #fefefe, offset −15%, scatter 50%, a light grain behind the title.
+ */
+export const CASE_STUDIES_DITHER: DitherPreset = {
+  src: asset("/images/home/case-studies-texture.webp"),
+  palette: [
+    { token: "white", position: 0 },
+    { token: "fog", position: 0.5 },
+    { token: "snow", position: 1 },
+  ],
+  pixelSize: 1,
+  offset: -0.15,
+  scatter: 0.5,
+  quantize: "none",
+  frame: { x: -0.1262, y: -1.6694, width: 1.2523, height: 5.2269 },
+  mobileFrame: COVER_FRAME,
+};
+
 /** Figma "Studio" hero: image at 14% over BLACK GRAW, offset −15%, scatter 50%. */
 export const STUDIO_DITHER: DitherPreset = {
   src: asset("/images/studio/hero-texture.webp"),

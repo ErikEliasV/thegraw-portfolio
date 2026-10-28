@@ -85,14 +85,17 @@ export function CasesDrawer({
   useEffect(() => {
     if (!open) return;
     const returnTo = returnFocusRef.current;
-    rootRef.current?.querySelector<HTMLElement>("a")?.focus();
+    // The panel still sits below the fold: focusing must not scroll the stage.
+    rootRef.current
+      ?.querySelector<HTMLElement>("a")
+      ?.focus({ preventScroll: true });
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") onClose();
     };
     window.addEventListener("keydown", onKeyDown);
     return () => {
       window.removeEventListener("keydown", onKeyDown);
-      returnTo?.focus();
+      returnTo?.focus({ preventScroll: true });
     };
   }, [open, onClose, returnFocusRef]);
 

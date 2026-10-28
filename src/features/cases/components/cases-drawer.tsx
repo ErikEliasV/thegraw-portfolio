@@ -1,20 +1,14 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState, type RefObject } from "react";
 import { CASES_PAGE } from "@/constants/cases";
 import { CASES_DRAWER_DITHER } from "@/constants/dither";
-import { getProjectHref } from "@/constants/projects";
+import { CasesTrack } from "@/features/cases/components/cases-track";
 import { DitherImage } from "@/features/dither-image";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
 import { DURATION, EASE, gsap, useGSAP } from "@/lib/gsap";
 import type { Project } from "@/types/project";
-
-/** Figma: the 2338px card row is centered on the 1920 frame. */
-const START_OFFSET = -209 / 1920;
-/** Pointer travel that turns a press into a drag (and cancels the click). */
-const DRAG_THRESHOLD = 6;
 
 type CasesDrawerProps = {
   open: boolean;
@@ -34,9 +28,6 @@ export function CasesDrawer({
   returnFocusRef,
 }: CasesDrawerProps) {
   const rootRef = useRef<HTMLDivElement>(null);
-  const viewportRef = useRef<HTMLDivElement>(null);
-  const trackRef = useRef<HTMLUListElement>(null);
-  const thumbRef = useRef<HTMLSpanElement>(null);
   const [mounted, setMounted] = useState(open);
   const reducedMotion = useReducedMotion();
   if (open && !mounted) setMounted(true);
@@ -60,7 +51,7 @@ export function CasesDrawer({
             0,
           )
           .fromTo(
-            "[data-drawer-item]",
+            "[data-drawer-item], [data-track-item]",
             { y: 60, autoAlpha: 0 },
             { y: 0, autoAlpha: 1, duration: DURATION.enter, stagger: 0.04 },
             0.25,
@@ -105,97 +96,6 @@ export function CasesDrawer({
     };
   }, [open, onClose, returnFocusRef]);
 
-  // Horizontal track: wheel and drag move a target the track eases to.
-  useGSAP(
-    () => {
-      const viewport = viewportRef.current;
-      const track = trackRef.current;
-      const thumb = thumbRef.current;
-      if (!mounted || !viewport || !track || !thumb) return;
-
-      const range = () => Math.min(0, viewport.clientWidth - track.scrollWidth);
-      const clamp = (value: number) => gsap.utils.clamp(range(), 0, value);
-      let target = clamp(viewport.clientWidth * START_OFFSET);
-      let x = target;
-      let dragging: { pointer: number; start: number; from: number } | null =
-        null;
-      let dragged = false;
-
-      const onWheel = (event: WheelEvent) => {
-        event.preventDefault();
-        target = clamp(target - (event.deltaY + event.deltaX));
-      };
-      const onPointerDown = (event: PointerEvent) => {
-        if (event.pointerType === "mouse" && event.button !== 0) return;
-        dragging = {
-          pointer: event.pointerId,
-          start: event.clientX,
-          from: target,
-        };
-        dragged = false;
-      };
-      const onPointerMove = (event: PointerEvent) => {
-        if (dragging?.pointer !== event.pointerId) return;
-        const distance = event.clientX - dragging.start;
-        if (!dragged && Math.abs(distance) > DRAG_THRESHOLD) {
-          dragged = true;
-          viewport.setPointerCapture(event.pointerId);
-        }
-        if (dragged) target = clamp(dragging.from + distance);
-      };
-      const onPointerUp = () => {
-        dragging = null;
-      };
-      // A drag must not open the card it started on.
-      const onClick = (event: MouseEvent) => {
-        if (!dragged) return;
-        event.preventDefault();
-        dragged = false;
-      };
-      // Keyboard: bring the focused card into view.
-      const onFocusIn = (event: FocusEvent) => {
-        const card = (event.target as HTMLElement).closest("li");
-        if (!card) return;
-        const left = card.offsetLeft + x;
-        const right = left + card.offsetWidth;
-        if (left < 0) target = clamp(target - left);
-        else if (right > viewport.clientWidth)
-          target = clamp(target - (right - viewport.clientWidth));
-      };
-
-      const tick = (_time: number, deltaTime: number) => {
-        const ease = reducedMotion ? 1 : 1 - Math.pow(0.86, deltaTime / 16.67);
-        x += (target - x) * ease;
-        track.style.transform = `translate3d(${x.toFixed(2)}px, 0, 0)`;
-        const min = range();
-        const visible = viewport.clientWidth / track.scrollWidth;
-        const progress = min < 0 ? x / min : 0;
-        thumb.style.width = `${visible * 100}%`;
-        thumb.style.left = `${progress * (1 - visible) * 100}%`;
-      };
-
-      viewport.addEventListener("wheel", onWheel, { passive: false });
-      viewport.addEventListener("pointerdown", onPointerDown);
-      viewport.addEventListener("pointermove", onPointerMove);
-      viewport.addEventListener("pointerup", onPointerUp);
-      viewport.addEventListener("pointercancel", onPointerUp);
-      viewport.addEventListener("click", onClick, true);
-      viewport.addEventListener("focusin", onFocusIn);
-      gsap.ticker.add(tick);
-      return () => {
-        gsap.ticker.remove(tick);
-        viewport.removeEventListener("wheel", onWheel);
-        viewport.removeEventListener("pointerdown", onPointerDown);
-        viewport.removeEventListener("pointermove", onPointerMove);
-        viewport.removeEventListener("pointerup", onPointerUp);
-        viewport.removeEventListener("pointercancel", onPointerUp);
-        viewport.removeEventListener("click", onClick, true);
-        viewport.removeEventListener("focusin", onFocusIn);
-      };
-    },
-    { dependencies: [mounted, reducedMotion, projects] },
-  );
-
   if (!mounted) return null;
 
   return (
@@ -220,50 +120,14 @@ export function CasesDrawer({
         <Link
           data-drawer-item
           href="/cases/all"
-          className="group relative text-more text-red-graw"
+          className="relative text-more text-red-graw"
         >
           {CASES_PAGE.viewAll}
         </Link>
-        <div
-          ref={viewportRef}
-          className="relative mt-32 w-full cursor-grab touch-pan-y select-none active:cursor-grabbing lg:mt-77"
-        >
-          <ul ref={trackRef} className="flex w-max gap-12 lg:gap-22">
-            {projects.map((project) => (
-              <li
-                key={project.slug}
-                data-drawer-item
-                className="w-[72vw] shrink-0 lg:w-568"
-              >
-                <Link
-                  href={getProjectHref(project)}
-                  draggable={false}
-                  className="group relative block aspect-[568/320] overflow-hidden bg-gray-graw"
-                >
-                  <Image
-                    src={project.cover}
-                    alt={project.name}
-                    fill
-                    sizes="(min-width: 1024px) 30vw, 72vw"
-                    draggable={false}
-                    className="object-cover transition-transform duration-700 ease-power3 group-hover:scale-105 group-focus-visible:scale-105"
-                  />
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div
-          data-drawer-item
-          aria-hidden
-          className="relative mt-32 h-4 w-[60vw] lg:mt-77 lg:w-609"
-        >
-          <span className="absolute inset-x-0 top-1/2 h-2 -translate-y-1/2 rounded-full bg-track" />
-          <span
-            ref={thumbRef}
-            className="absolute inset-y-0 left-0 w-1/3 rounded-full bg-red-graw"
-          />
-        </div>
+        <CasesTrack
+          projects={projects}
+          className="relative mt-32 gap-32 lg:mt-77 lg:gap-77"
+        />
       </div>
     </div>
   );

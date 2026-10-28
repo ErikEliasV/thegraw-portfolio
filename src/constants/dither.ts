@@ -115,3 +115,12 @@ export const CASES_DRAWER_DITHER: DitherPreset = {
   ...STUDIO_DITHER,
   frame: { x: -0.0576, y: -1.6016, width: 1.1152, height: 5.2016 },
 };
+
+/**
+ * Figma "Project Open" closing block (1920×1039.658): the studio texture at
+ * 14% over BLACK GRAW behind the credits and the cases track.
+ */
+export const PROJECT_END_DITHER: DitherPreset = {
+  ...STUDIO_DITHER,
+  frame: { x: -0.2221, y: -0.9883, width: 1.4441, height: 4.0169 },
+};

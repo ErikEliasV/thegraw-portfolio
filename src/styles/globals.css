@@ -107,6 +107,9 @@
   --text-card: max(2.5rem, calc(var(--fluid) * 113.602));
   --text-card--line-height: 1.2;
   --text-card--letter-spacing: -0.07em;
+  --text-chapter: max(2.25rem, calc(var(--fluid) * 86.15));
+  --text-chapter--line-height: 1.2;
+  --text-chapter--letter-spacing: -0.07em;
   --text-heading: max(2.25rem, calc(var(--fluid) * 77.552));
   --text-heading--line-height: 1.2;
   --text-heading--letter-spacing: -0.04em;
@@ -152,6 +155,8 @@
   --text-lead--letter-spacing: -0.04em;
   --text-intro: max(1rem, calc(var(--fluid) * 24.804));
   --text-intro--line-height: 0.89;
+  --text-copy: max(1rem, calc(var(--fluid) * 26.661));
+  --text-copy--line-height: 1;
   --text-tab: max(1rem, calc(var(--fluid) * 22.812));
   --text-tab--line-height: 1.2;
   --text-tab--letter-spacing: -0.07em;

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ProjectDetailSection } from "@/components/sections/project-detail-section";
-import { ProjectsCarouselSection } from "@/components/sections/projects-carousel-section";
+import { ProjectMoreSection } from "@/components/sections/project-more-section";
 import { findProject, PROJECTS } from "@/constants/projects";
 
 export const dynamicParams = false;
@@ -26,13 +26,9 @@ export default async function ProjectPage({
   if (!project) notFound();
 
   return (
-    // The Figma "Project Open" frame is 1440 wide: scale this page from it.
-    <main
-      id="conteudo"
-      className="bg-paper [--fluid:calc(100vw/1440)] lg:[--spacing:calc(100vw/1440)]"
-    >
+    <main id="conteudo" className="bg-black-graw">
       <ProjectDetailSection project={project} />
-      <ProjectsCarouselSection className="mt-31 bg-paper" />
+      <ProjectMoreSection />
     </main>
   );
 }

@@ -9,28 +9,30 @@ type ProjectDetailSectionProps = {
   project: Project;
 };
 
-const WIDE = "aspect-[1346/747]";
+/** Gallery images: 1517.428 wide minus the 11.109px frame, 829.809 tall. */
+const WIDE = "aspect-[1495.21/829.809]";
+const FRAME = "lg:p-11";
 
-/** Figma "Project Open" (1440 frame): hero, intro, gallery, story and credits. */
+/** Figma "Project Open" (1920 frame, BLACK GRAW): hero, intro, gallery, story. */
 export function ProjectDetailSection({ project }: ProjectDetailSectionProps) {
   return (
     <>
-      <section data-header-theme="light" className="pb-20">
-        <div className="relative aspect-[1440/799] w-full bg-placeholder">
+      <section data-header-theme="light" className="bg-black-graw">
+        <div className="relative h-[60svh] w-full bg-placeholder lg:h-692">
           <ParallaxImage
-            src={project.cover}
+            src={PROJECT_PAGE.image}
             alt=""
             priority
-            imageClassName="object-[50%_39.5%]"
+            imageClassName="object-[50%_40.9%]"
           />
         </div>
       </section>
 
       <section
-        data-header-theme="dark"
-        className="flex flex-col items-center gap-64 pt-44 text-black lg:gap-92"
+        data-header-theme="light"
+        className="flex flex-col items-center gap-44 bg-black-graw pt-44 text-white"
       >
-        <div className="flex w-full flex-col gap-32 px-16 lg:px-52">
+        <div className="flex w-full flex-col gap-32 px-16 lg:w-1496 lg:px-0">
           <div className="flex flex-col gap-16 lg:flex-row lg:items-center lg:justify-between">
             <SplitReveal
               as="h1"
@@ -47,95 +49,64 @@ export function ProjectDetailSection({ project }: ProjectDetailSectionProps) {
           </Reveal>
         </div>
 
-        <div className="flex w-full flex-col gap-64 px-6 lg:w-1366 lg:gap-92 lg:px-0">
-          <div className="flex flex-col gap-9">
-            <GalleryImage src={project.cover} aspectClassName={WIDE} />
-            <div className="flex flex-col gap-30 lg:flex-row lg:items-start">
+        <div className="flex w-full flex-col items-center gap-64 px-6 lg:w-1517.5 lg:gap-62 lg:px-0">
+          <div className="flex w-full flex-col gap-10">
+            <GalleryImage
+              src={PROJECT_PAGE.image}
+              aspectClassName={WIDE}
+              className={FRAME}
+            />
+            <div className="flex flex-col gap-32 lg:w-1506 lg:flex-row lg:items-start lg:gap-33.25">
               <GalleryImage
-                src={project.cover}
-                aspectClassName="aspect-[781/747]"
+                src={PROJECT_PAGE.image}
+                aspectClassName="aspect-[867.577/829.809]"
                 imageClassName="object-center"
-                className="lg:w-801"
+                className={`${FRAME} lg:w-889.75`}
               />
-              <Reveal className="flex flex-col gap-14 px-10 lg:w-450 lg:px-0">
-                <h2 className="text-heading tracking-tight">
-                  {PROJECT_PAGE.solution}
-                </h2>
-                <p className="text-body">{LOREM_LONG}</p>
+              <Reveal className="flex flex-col gap-16 px-10 lg:w-582.75 lg:gap-15.5 lg:px-0">
+                <h2 className="text-chapter">{PROJECT_PAGE.solution}</h2>
+                <p className="text-copy">{LOREM_LONG}</p>
               </Reveal>
             </div>
             {[0, 1, 2].map((index) => (
               <GalleryImage
                 key={index}
-                src={project.cover}
+                src={PROJECT_PAGE.image}
                 aspectClassName={WIDE}
+                className={FRAME}
               />
             ))}
           </div>
 
-          <Reveal className="flex flex-col gap-30 px-10 lg:flex-row lg:items-start lg:self-center lg:px-0">
-            <div data-reveal className="flex flex-col gap-6 lg:w-797">
-              <h2 className="text-heading tracking-tight">
-                {PROJECT_PAGE.process}
-              </h2>
-              <p className="text-body">{LOREM_LONG}</p>
+          <Reveal className="flex flex-col gap-32 px-10 lg:w-1490 lg:flex-row lg:items-start lg:gap-33.25 lg:px-0">
+            <div data-reveal className="flex flex-col gap-6.75 lg:w-885.25">
+              <h2 className="text-chapter">{PROJECT_PAGE.process}</h2>
+              <p className="text-copy">{LOREM_LONG}</p>
             </div>
-            <div data-reveal className="flex flex-col gap-6 lg:w-458">
-              <h2 className="text-heading tracking-tight">
-                {PROJECT_PAGE.results}
-              </h2>
-              <p className="text-body">{PROJECT_PAGE.resultsBody}</p>
+            <div data-reveal className="flex flex-col gap-6.75 lg:w-571">
+              <h2 className="text-chapter">{PROJECT_PAGE.results}</h2>
+              <p className="text-copy">{PROJECT_PAGE.resultsBody}</p>
             </div>
           </Reveal>
 
-          <div className="flex flex-col gap-41">
+          <div className="flex w-full flex-col gap-24 lg:gap-45.5">
             {[0, 1, 2].map((index) => (
               <GalleryImage
                 key={index}
-                src={project.cover}
+                src={PROJECT_PAGE.image}
                 aspectClassName={WIDE}
+                className={FRAME}
               />
             ))}
           </div>
         </div>
 
-        <div className="flex w-full flex-col items-center gap-31">
-          <GalleryImage
-            src={project.cover}
-            aspectClassName="aspect-[1420/799]"
-            className="w-full"
-          />
-          <div className="relative grid w-full px-16 lg:w-1320 lg:px-0">
-            <Reveal className="col-start-1 row-start-1 grid grid-cols-2 gap-x-24 lg:flex lg:w-1034 lg:gap-90 lg:p-10">
-              {PROJECT_PAGE.credits.map((column, columnIndex) => (
-                <dl
-                  key={columnIndex}
-                  data-reveal
-                  className={
-                    columnIndex === 0
-                      ? "flex flex-col gap-46 lg:w-428"
-                      : "flex flex-col gap-46 lg:w-496"
-                  }
-                >
-                  {column.map((credit) => (
-                    <div key={credit.label} className="flex flex-col gap-6">
-                      <dt className="text-heading tracking-tight">
-                        {credit.label}
-                      </dt>
-                      <dd className="text-credit">{credit.value}</dd>
-                    </div>
-                  ))}
-                </dl>
-              ))}
-            </Reveal>
-            <SplitReveal
-              split="chars"
-              className="pointer-events-none col-start-1 row-start-1 mt-auto justify-self-end text-end text-orange lg:mt-55 lg:ml-714 lg:h-334 lg:w-606 lg:justify-self-start"
-            >
-              {PROJECT_PAGE.end}
-            </SplitReveal>
-          </div>
-        </div>
+        <GalleryImage
+          src={PROJECT_PAGE.image}
+          aspectClassName="aspect-[1900/799]"
+          imageClassName="object-center"
+          className="w-full"
+        />
       </section>
     </>
   );

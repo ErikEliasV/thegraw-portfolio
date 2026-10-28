@@ -73,13 +73,13 @@ export function Header() {
       <header
         ref={headerRef}
         inert={menuOpen}
-        className="group/header fixed inset-x-0 top-0 z-40 px-16 pt-16 text-white transition-colors duration-300 data-[theme=dark]:text-black lg:pt-29 lg:pr-46 lg:pl-50"
+        className="group/header pointer-events-none fixed inset-x-0 top-0 z-40 px-16 pt-16 text-white transition-colors duration-300 data-[theme=dark]:text-black lg:pt-29 lg:pr-46 lg:pl-50"
       >
         <div className="flex items-center justify-between">
           <Link
             href="/"
             aria-label="The Graw, página inicial"
-            className="block"
+            className="pointer-events-auto block"
           >
             <HeaderLogo />
           </Link>
@@ -89,7 +89,7 @@ export function Header() {
             aria-expanded={menuOpen}
             aria-controls="site-menu"
             className={cn(
-              "group flex h-45 w-129 items-center justify-center text-nav transition-opacity duration-300",
+              "group pointer-events-auto flex h-45 w-129 items-center justify-center text-nav transition-opacity duration-300",
               menuOpen && "opacity-0",
             )}
             onClick={() => setMenuOpen(true)}

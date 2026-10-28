@@ -24,7 +24,7 @@
   --color-ink: #111111;
   --color-paper: #e4e4e4;
   --color-placeholder: #d9d9d9;
-  --color-menu: #d6d6d6;
+  --color-menu: #eaeaea;
   --color-menu-link: #7f7f7f;
   --color-bar: #787878;
   --color-taupe: #9f9192;
@@ -32,16 +32,21 @@
   --color-yellow: #f8bf03;
   --color-orange: #ff4000;
   --color-coal: #191919;
+  --color-dim: #434343;
+  --color-chip-text: #8c8c8c;
+  --color-track: #888888;
 
   /* Figma shader gradient-map stops */
   --color-red-graw-deep: #7b000b;
   --color-silver: #cdcdcd;
+  --color-mist: #d1d1d1;
 
   /* Figma translucent fills */
   --color-shade: rgb(0 0 0 / 0.52);
   --color-fade-light: rgb(228 228 228 / 0.19);
   --color-fade-dark: rgb(15 15 15 / 0.19);
   --color-tint: rgb(1 60 196 / 0.01);
+  --color-chip: rgb(101 101 101 / 0.18);
 
   --blur-fade: 13.05px;
   --blur-veil: 20.8px;
@@ -103,6 +108,11 @@
   --text-number: max(1.25rem, calc(var(--fluid) * 30));
   --text-number--line-height: 0.93;
   --text-number--letter-spacing: -0.04em;
+  --text-more: max(1.375rem, calc(var(--fluid) * 34.286));
+  --text-more--line-height: 1.2;
+  --text-counter: max(1.125rem, calc(var(--fluid) * 26.836));
+  --text-counter--line-height: 1.2;
+  --text-counter--letter-spacing: -0.07em;
   --text-label: max(1.125rem, calc(var(--fluid) * 26));
   --text-label--line-height: 1.2;
   --text-md: max(1rem, calc(var(--fluid) * 24.577));
@@ -111,6 +121,9 @@
   --text-cta: max(1rem, calc(var(--fluid) * 23.281));
   --text-cta--line-height: 1.2;
   --text-cta--letter-spacing: -0.07em;
+  --text-tab: max(1rem, calc(var(--fluid) * 22.812));
+  --text-tab--line-height: 1.2;
+  --text-tab--letter-spacing: -0.07em;
   --text-body: max(1rem, calc(var(--fluid) * 24));
   --text-body--line-height: 1;
   --text-meta: max(0.875rem, calc(var(--fluid) * 21.864));
@@ -121,6 +134,9 @@
   --text-tag: max(0.75rem, calc(var(--fluid) * 17.193));
   --text-tag--line-height: 1.2;
   --text-tag--letter-spacing: -0.07em;
+  --text-index: max(0.75rem, calc(var(--fluid) * 16));
+  --text-index--line-height: 1.2;
+  --text-index--letter-spacing: 0.57em;
   --text-desc: max(0.8125rem, calc(var(--fluid) * 16));
   --text-desc--line-height: 0.93;
   --text-desc--letter-spacing: -0.04em;

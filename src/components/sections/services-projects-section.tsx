@@ -4,8 +4,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
 import { EdgeFades } from "@/components/ui/edge-fades";
-import { getProjectHref } from "@/constants/projects";
-import { SERVICE_SLIDE, SERVICES_PAGE } from "@/constants/services";
+import {
+  ProjectBrand,
+  ProjectDisciplines,
+  ProjectMeta,
+} from "@/components/ui/project-meta";
+import { getProjectHref, PROJECT_SHOWCASE } from "@/constants/projects";
+import { SERVICES_PAGE } from "@/constants/services";
 import { useLenis } from "@/hooks/use-lenis";
 import { EASE, gsap, useGSAP } from "@/lib/gsap";
 
@@ -131,7 +136,7 @@ export function ServicesProjectsSection({
               className="relative h-full w-[100cqw] shrink-0 snap-start overflow-hidden"
             >
               <Link
-                href={getProjectHref(SERVICE_SLIDE)}
+                href={getProjectHref(PROJECT_SHOWCASE)}
                 className="group absolute inset-0 block focus-visible:outline-offset-[-4px]"
               >
                 <div
@@ -139,7 +144,7 @@ export function ServicesProjectsSection({
                   className="absolute inset-y-0 -left-[6%] w-[112%]"
                 >
                   <Image
-                    src={SERVICE_SLIDE.image}
+                    src={PROJECT_SHOWCASE.image}
                     alt=""
                     fill
                     sizes="112vw"
@@ -150,33 +155,9 @@ export function ServicesProjectsSection({
                   data-slide-content
                   className="absolute inset-x-16 bottom-104 flex flex-col gap-20 lg:inset-x-auto lg:top-115 lg:bottom-auto lg:left-218 lg:flex-row lg:items-start lg:gap-271"
                 >
-                  <div className="flex flex-col items-start gap-24 lg:w-226.25 lg:gap-71.5">
-                    <Image
-                      src={SERVICE_SLIDE.logo}
-                      alt={SERVICE_SLIDE.client}
-                      width={99}
-                      height={33}
-                      className="h-auto w-80 lg:w-98.5"
-                    />
-                    <p className="max-w-226 text-lead">
-                      {SERVICE_SLIDE.description}
-                    </p>
-                  </div>
-                  <dl className="flex w-full justify-between text-fine whitespace-nowrap uppercase lg:w-514.25">
-                    <div className="flex gap-17.5">
-                      <dt>{SERVICES_PAGE.clientLabel}</dt>
-                      <dd className="font-medium">{SERVICE_SLIDE.client}</dd>
-                    </div>
-                    <div className="flex gap-11.5">
-                      <dt>{SERVICES_PAGE.yearLabel}</dt>
-                      <dd className="font-medium">{SERVICE_SLIDE.year}</dd>
-                    </div>
-                  </dl>
-                  <ul className="flex flex-wrap gap-x-12 text-lead lg:block lg:w-146">
-                    {SERVICE_SLIDE.disciplines.map((discipline) => (
-                      <li key={discipline}>{discipline}</li>
-                    ))}
-                  </ul>
+                  <ProjectBrand className="gap-24 lg:w-226.25 lg:gap-71.5" />
+                  <ProjectMeta className="w-full lg:w-514.25" />
+                  <ProjectDisciplines className="lg:w-146" />
                 </div>
               </Link>
             </li>

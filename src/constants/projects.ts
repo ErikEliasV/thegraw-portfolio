@@ -43,6 +43,28 @@ export const PROJECTS: readonly Project[] = CASES.map(
   }),
 );
 
+/**
+ * Figma project showcase (home "Projeto Allce" and services "Projeto view
+ * Services" slides): every variant shows this Grupo Penguin placeholder.
+ */
+export const PROJECT_SHOWCASE = {
+  slug: "grupo-penguin",
+  client: "grupo penguin",
+  handle: "/grupopenguin",
+  year: "2026",
+  logo: asset("/images/logos/grupo-penguin.svg"),
+  description: "A calm, editorial, website for a wellness brand",
+  disciplines: ["branding", "web design", "development"],
+  image: asset("/images/services/project-slide.webp"),
+  device: asset("/images/home/case-phone.webp"),
+} as const;
+
+export const SHOWCASE_LABELS = {
+  client: "Client",
+  year: "year",
+  explore: "Explore project",
+} as const;
+
 export function getProjectHref(project: Pick<Project, "slug">) {
   return `/cases/${project.slug}`;
 }
@@ -51,20 +73,13 @@ export function findProject(slug: string) {
   return PROJECTS.find((project) => project.slug === slug);
 }
 
-/** Home featured slider and carousels: the original placeholder project. */
+/** Project page carousel and studio card: the original placeholder project. */
 export const FEATURED_PROJECT: Project = {
   ...PLACEHOLDER,
   slug: "allce",
   name: "Allce",
   cover: asset("/images/home/featured-project.webp"),
 };
-
-/** Featured slider: three slides, as marked by the Figma dots. */
-export const FEATURED_SLIDES: readonly Project[] = [
-  FEATURED_PROJECT,
-  FEATURED_PROJECT,
-  FEATURED_PROJECT,
-];
 
 /** "Frame 96" carousel cards. */
 export const CAROUSEL_CARD = {

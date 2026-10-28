@@ -14,10 +14,3 @@ export type Project = {
   cover: string;
   thumbnail: string;
 };
-
-export type Service = {
-  number: string;
-  title: string;
-  description: string;
-  deliverables: readonly [readonly string[], readonly string[]];
-};

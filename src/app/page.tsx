@@ -1,19 +1,22 @@
 import { Footer } from "@/components/layout/footer";
-import { FeaturedProjectSection } from "@/components/sections/featured-project-section";
+import { CaseStudiesIntroSection } from "@/components/sections/case-studies-intro-section";
 import { HeroSection } from "@/components/sections/hero-section";
 import { LetsWorkSection } from "@/components/sections/lets-work-section";
-import { ProjectsCarouselSection } from "@/components/sections/projects-carousel-section";
-import { ServicesSection } from "@/components/sections/services-section";
+import { ProjectShowcaseSection } from "@/components/sections/project-showcase-section";
+import { ViewAllCasesSection } from "@/components/sections/view-all-cases-section";
+import { HOME_PAGE } from "@/constants/pages";
 
 export default function HomePage() {
   return (
     <>
       <main id="conteudo">
         <HeroSection />
-        <FeaturedProjectSection />
-        <ServicesSection />
+        <CaseStudiesIntroSection />
+        {Array.from({ length: HOME_PAGE.showcaseCount }, (_, index) => (
+          <ProjectShowcaseSection key={index} />
+        ))}
+        <ViewAllCasesSection />
         <LetsWorkSection />
-        <ProjectsCarouselSection />
       </main>
       <Footer />
     </>

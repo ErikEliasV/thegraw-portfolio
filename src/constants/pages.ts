@@ -7,6 +7,17 @@ export const LOREM_SHORT =
 export const LOREM_LONG =
   "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride Printing Library in London, took a 1914 Cicero translation and scrambled it to make dummy text for Letraset's Body Type sheets. It has survived not only many decades, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised thanks to these sheets and more recently with desktop publishing software like Aldus PageMaker and Microsoft Word including versions of Lorem Ipsum.";
 
+export const HOME_PAGE = {
+  caseStudies: {
+    title: ["case", "studies"],
+    body: "A closer look at how strategy, design, and development shape each project.",
+  },
+  /** Four "Projeto Allce" slides in the Figma home. */
+  showcaseCount: 4,
+  viewAllCases: "View All Cases",
+  viewAllImage: asset("/images/home/view-all-band.webp"),
+} as const;
+
 export const PROJECT_PAGE = {
   solution: "Solution",
   process: "process",

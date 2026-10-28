@@ -77,15 +77,21 @@ export const STUDIO_PAGE = {
   projectsLead: "Projects Lead",
   portrait: asset("/images/studio/portrait.webp"),
   projectsLeadImage: asset("/images/studio/projects-lead.webp"),
+  /**
+   * Shown one at a time while scrolling, each with its own photo. The Figma
+   * has only the first photo; the other two are site images standing in.
+   */
   sections: [
     {
       heading: "Purpose",
+      image: asset("/images/studio/workspace.webp"),
       body: [
         "We move brands forward through clear thinking, distinctive design, and digital experiences built with purpose.",
       ],
     },
     {
       heading: "Pillars",
+      image: asset("/images/services/branding.webp"),
       body: [
         "Clarity — We turn complex ideas into clear, focused experiences.",
         "Identity — We create distinctive visual languages that make each brand recognizable.",
@@ -94,12 +100,12 @@ export const STUDIO_PAGE = {
     },
     {
       heading: "Foundations",
+      image: asset("/images/cases/collage-main.webp"),
       body: [
         "Good work starts with listening. We ask the right questions, understand the challenge, and make deliberate decisions at every step — from the first idea to the final detail.",
       ],
     },
   ],
-  workspace: asset("/images/studio/workspace.webp"),
   videoCover: asset("/images/studio/video-cover.webp"),
   play: "play",
 } as const;
